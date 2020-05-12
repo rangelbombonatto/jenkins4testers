@@ -12,3 +12,7 @@ Before("@login") do
   @login_page.with(user["email"], user["pass"])
 end
 
+After do |scenario|
+  screenshot = page.save_screenshot("log/screenshot/#{scenario.__id__}}.png")
+  embed(screenshot, "image/png", "Screenshot")
+end
